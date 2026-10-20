@@ -1,0 +1,26 @@
+# IDE configuration and local run credentials
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# Build output
+**/target/
+**/build/
+*.class
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.local.properties
+
+# Frontend dependencies
+node_modules/
+dist/
+
+# Operating system
+.DS_Store
+Thumbs.db

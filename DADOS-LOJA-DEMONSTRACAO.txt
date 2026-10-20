@@ -1,0 +1,222 @@
+CASA DAS MOLDURAS — ESPECIFICAÇÃO DE DADOS E PARÂMETROS OPERACIONAIS
+Versão: 1.1 | Revisão: 19/10/2026 | Ambiente: demonstração
+
+OBJETIVO E ESCOPO
+Especificação do conjunto inicial de dados, parâmetros comerciais e cenários de validação do ecommerce. Os dados sintéticos permitem exercitar catálogo, estoque, pedidos, encomendas e atendimento de forma reproduzível.
+O conjunto contém duas referências de produtos comerciais e seis produtos sintéticos. Preços e quantidades constituem valores de teste, sem sincronização com fornecedores. Catálogo e variações são inicialmente ativos.
+Pagamentos, notificações, logística e reembolsos utilizam adaptadores simulados. A identificação do ambiente é apresentada na interface geral e no checkout; descrições de produto contêm apenas conteúdo comercial.
+O provisionamento dos dados é manual, via pgAdmin 4. Este documento não executa alterações no PostgreSQL. Os campos image_asset_planned identificam recursos visuais pendentes de produção e não correspondem a arquivos disponíveis.
+1. IDENTIDADE E CONTATOS
+store_name: Casa das Molduras
+store_tagline: Seus momentos, nossa arte.
+store_description: Molduras, quadros e espelhos para transformar ambientes e valorizar suas memórias. Escolha uma peça pronta ou solicite um projeto personalizado.
+store_email: atendimento@casadasmolduras.example
+store_address: Rua das Artes, 120, Centro, Cidade Modelo — endereço de demonstração.
+store_phone_display: (00) 00000-0000
+store_whatsapp_url: null | fallback: atendimento interno simulado.
+store_instagram_url: null | rendering: ocultar link quando não configurado.
+store_map_url: null | rendering: endereço textual, sem navegação externa.
+store_hours: Segunda a sexta, 09h às 18h; sábado, 09h às 13h; domingo fechado.
+store_timezone: America/Sao_Paulo
+store_currency: BRL
+store_language: pt-BR
+store_colors: preto #171717, grafite #2B2D2F, marfim #F5EFE4, dourado #B58A45.
+store_logo: recurso visual pendente de tratamento para aplicação em cabeçalho responsivo.
+store_tax_id: null | integração fiscal: fora do escopo.
+
+2. PRODUTOS E MEDIDAS
+Categorias técnicas: molduras, quadros, espelhos. Nomes exibidos: Molduras, Quadros, Espelhos.
+Venda pronta: todos os oito itens do catálogo abaixo.
+Sob encomenda: molduras, composição de quadros e espelhos retangulares personalizados, por orçamento.
+Medidas: largura × altura, em centímetros. INTERNAL representa a imagem ou o espelho encaixado; EXTERNAL representa o conjunto completo. A interface sempre informa a referência.
+Acabamentos disponíveis para encomenda: preto fosco, branco fosco, madeira natural e dourado.
+Materiais disponíveis: madeira maciça, MDF, vidro comum e espelho de 3 mm, conforme a peça.
+Limites simulados para orçamento: cada lado entre 10 e 100 cm, até duas casas decimais. Fora do intervalo, encaminhar para análise manual sem prometer fabricação.
+
+3. CATÁLOGO INICIAL
+Todos os produtos e variações abaixo: ativos. Estoques são quantidades simuladas iniciais; não representam estoque de fornecedores.
+Preços são os valores adotados para a demonstração, sem atualização automática.
+Proveniência: registros 01 e 02 derivados das fontes comerciais indicadas; registros 03 a 08 sintéticos.
+
+01 | Kit Moldura Maresia A3 — Pinus Natural
+slug: kit-moldura-maresia-a3-pinus-natural
+category_slug: molduras
+sku: MARESIA-A3-NATURAL
+material: Madeira maciça de pinus, vidro e algodão
+size: 29 × 42 cm | reference: INTERNAL | finish: Pinus natural
+price: 69.90 | stock_quantity: 12 | reserved_quantity: 0 | is_featured: true
+description: Moldura com vidro para fotos, desenhos e gravuras de 29 × 42 cm. Estrutura em pinus maciço e alça de algodão para pendurar na vertical.
+image_asset_planned: maresia-a3-natural.webp
+source: https://www.tokstok.com.br/kit-moldura-a3-42-cm-x-29-cm-pinus-natural-maresia/p
+
+02 | Porta-retrato Court — Dourado/Cream
+slug: porta-retrato-court-dourado-cream
+category_slug: molduras
+sku: COURT-13X18-GOLD-CREAM
+material: Resina e vidro
+size: 13 × 18 cm | reference: INTERNAL | finish: Dourado e creme
+price: 89.90 | stock_quantity: 8 | reserved_quantity: 0 | is_featured: true
+description: Porta-retrato de mesa para fotografias de 13 × 18 cm, com moldura em resina dourada e creme e visor de vidro.
+image_asset_planned: court-13x18-gold-cream.webp
+source: https://www.tokstok.com.br/porta-retrato-13-cm-x-18-cm-dourado-cream-court/p
+
+03 | Moldura Essencial Preta
+slug: moldura-essencial-preta
+category_slug: molduras
+sku: ESSENTIAL-20X30-BLACK
+material: MDF e vidro
+size: 20 × 30 cm | reference: INTERNAL | finish: Preto fosco
+price: 49.90 | stock_quantity: 20 | reserved_quantity: 0 | is_featured: false
+description: Moldura preta de linhas retas, com vidro frontal e suporte para fixação na parede nas posições horizontal ou vertical.
+image_asset_planned: essential-20x30-black.webp
+
+04 | Moldura Essencial Branca
+slug: moldura-essencial-branca
+category_slug: molduras
+sku: ESSENTIAL-30X40-WHITE
+material: MDF e vidro
+size: 30 × 40 cm | reference: INTERNAL | finish: Branco fosco
+price: 79.90 | stock_quantity: 15 | reserved_quantity: 0 | is_featured: false
+description: Moldura branca com vidro frontal para fotografias, pôsteres e ilustrações. Instalação na parede na horizontal ou vertical.
+image_asset_planned: essential-30x40-white.webp
+
+05 | Quadro Botânico Folhas
+slug: quadro-botanico-folhas
+category_slug: quadros
+sku: BOTANICAL-30X40-NATURAL
+material: Impressão em papel, moldura de MDF e vidro
+size: 30 × 40 cm | reference: INTERNAL | finish: Amadeirado natural
+price: 129.90 | stock_quantity: 10 | reserved_quantity: 0 | is_featured: true
+description: Composição botânica em tons de verde, com impressão em papel, proteção de vidro e moldura de acabamento amadeirado. Pronto para pendurar.
+image_asset_planned: botanical-30x40-natural.webp
+
+06 | Quadro Abstrato Areia
+slug: quadro-abstrato-areia
+category_slug: quadros
+sku: ABSTRACT-40X60-GOLD
+material: Impressão em papel, moldura de MDF e vidro
+size: 40 × 60 cm | reference: INTERNAL | finish: Dourado
+price: 219.90 | stock_quantity: 6 | reserved_quantity: 0 | is_featured: false
+description: Arte abstrata em tons de areia e bege, emoldurada com acabamento dourado e proteção de vidro. Pronta para instalação na parede.
+image_asset_planned: abstract-40x60-gold.webp
+
+07 | Espelho Retangular Essencial
+slug: espelho-retangular-essencial
+category_slug: espelhos
+sku: MIRROR-40X60-BLACK
+material: Espelho de 3 mm e moldura de MDF
+size: 40 × 60 cm | reference: INTERNAL | finish: Preto fosco
+price: 249.90 | stock_quantity: 5 | reserved_quantity: 0 | is_featured: true
+description: Espelho retangular com moldura preta para salas, quartos e corredores. A medida informada corresponde à área do espelho.
+image_asset_planned: mirror-40x60-black.webp
+
+08 | Espelho Retangular Clássico
+slug: espelho-retangular-classico
+category_slug: espelhos
+sku: MIRROR-50X70-GOLD
+material: Espelho de 3 mm e moldura de madeira
+size: 50 × 70 cm | reference: INTERNAL | finish: Dourado
+price: 389.90 | stock_quantity: 4 | reserved_quantity: 0 | is_featured: false
+description: Espelho retangular com moldura de madeira dourada, indicado para composições decorativas em paredes internas.
+image_asset_planned: mirror-50x70-gold.webp
+
+4. PERSONALIZAÇÃO E PRECIFICAÇÃO
+O cliente informa tipo de peça, largura, altura, acabamento, uso desejado e observações. Pode indicar que levará a arte física à loja ou que deseja impressão.
+Entrada de arte no escopo inicial: metadados textuais. Upload e pré-visualização de arquivos: evolução planejada.
+Orçamentos são elaborados pelo perfil ADMIN, com discriminação de materiais e serviços. Precificação automatizada: fora do incremento inicial.
+Tabela interna simulada:
+- Moldura preta/branca em MDF: R$ 25,00 por metro linear.
+- Moldura de madeira natural: R$ 35,00 por metro linear.
+- Moldura dourada de madeira: R$ 45,00 por metro linear.
+- Vidro comum: R$ 80,00 por metro quadrado.
+- Espelho de 3 mm: R$ 180,00 por metro quadrado; substitui o vidro, não soma os dois.
+- Fundo: R$ 30,00 por metro quadrado.
+- Impressão: R$ 60,00 por metro quadrado, opcional.
+- Montagem: R$ 25,00 por peça.
+Perímetro em metros = 2 × (largura_cm + altura_cm) / 100.
+Área em metros quadrados = largura_cm × altura_cm / 10000.
+Arredondar cada componente para duas casas decimais; total é a soma. Não há taxa de desperdício, cupom ou desconto nesta regra simulada.
+Validade da proposta: 7 dias corridos a partir da resposta.
+Prazo começa após aprovação das especificações e confirmação do sinal simulado, valendo o evento que ocorrer por último.
+
+Exemplo de orçamento A — moldura preta 30 × 40 cm, sem impressão:
+Perímetro 1,40 m × R$ 25,00 = R$ 35,00.
+Vidro 0,12 m² × R$ 80,00 = R$ 9,60.
+Fundo 0,12 m² × R$ 30,00 = R$ 3,60.
+Montagem R$ 25,00.
+Total R$ 73,20. Sinal R$ 36,60. Saldo R$ 36,60. Produção: 5 dias úteis.
+
+Exemplo de orçamento B — espelho dourado 50 × 70 cm:
+Perímetro 2,40 m × R$ 45,00 = R$ 108,00.
+Espelho 0,35 m² × R$ 180,00 = R$ 63,00.
+Fundo 0,35 m² × R$ 30,00 = R$ 10,50.
+Montagem R$ 25,00.
+Total R$ 206,50. Sinal R$ 103,25. Saldo R$ 103,25. Produção: 10 dias úteis.
+O preço personalizado segue a fórmula deste cenário; pode ser diferente de uma peça pronta com outro acabamento ou construção.
+
+5. ESTOQUE E OPERAÇÃO
+Controlar unidades prontas por SKU. Matéria-prima de encomendas será conferida manualmente pelo administrador nesta fase.
+Pedidos online e vendas de balcão simuladas usam o mesmo estoque. Venda de balcão é registrada pelo administrador e deve respeitar reservas existentes.
+Adicionar ao carrinho não reserva. Criar pedido reserva por 30 minutos. Pagamento aprovado baixa estoque e libera a reserva; cancelamento ou expiração libera sem baixar.
+Disponível = stock_quantity - reserved_quantity.
+Alerta administrativo quando o disponível for menor que 3.
+Nunca reinicializar estoque ou reservas ao iniciar a aplicação. As quantidades deste arquivo são apenas o cadastro inicial.
+Registros vinculados a pedidos devem preservar integridade referencial e histórico; retirada de catálogo ocorre por desativação lógica.
+
+6. PRAZOS, PAGAMENTO E RECEBIMENTO
+Peças prontas: preparação em 1 dia útil após pagamento simulado aprovado.
+Personalizados com moldura: 5 dias úteis; com espelho: 10 dias úteis.
+Para cálculo inicial, dias úteis são segunda a sexta, sem calendário de feriados. Sábado permite retirada, mas não conta como dia de produção.
+Pagamento de produtos prontos: integral, simulado como Pix ou cartão à vista, sem dados reais de cartão ou QR de cobrança.
+Encomendas: sinal de 50% e saldo antes de liberar retirada/entrega, ambos simulados. Se houver centavo ímpar, arredondar o sinal e calcular saldo por diferença.
+Retirada: gratuita, dentro do horário de atendimento, mediante número do pedido e nome cadastrado.
+Entrega: local simulada, com escolha de zona no checkout; não exige API de CEP.
+Zona CENTRAL: R$ 15,00 e 1 dia útil após preparação.
+Zona NEIGHBORHOODS: R$ 25,00 e 2 dias úteis após preparação.
+Zona OUTSIDE: entrega indisponível; modalidade permitida: retirada. Mapeamento geográfico de CEP: não configurado.
+Total do pedido = subtotal dos itens + entrega. Frete não depende da forma de pagamento.
+Peças com vidro/espelho: embalagem protetora e transporte local; sem envio nacional neste cenário.
+
+7. ATENDIMENTO E ADMINISTRAÇÃO
+Compra de peças prontas é concluída no site. Personalizados seguem solicitação e aprovação de orçamento na área do cliente.
+Prazo de resposta: até 1 dia útil.
+Responsabilidades operacionais: gestão de catálogo, preços, financeiro, pedidos e orçamentos. Autorização inicial: perfil ADMIN. Segregação de permissões por função: evolução planejada.
+Painel administrativo responsivo. Credenciais são provisionadas fora da documentação e não integram o conjunto de dados público.
+Informações necessárias ao pedido: nome, email e, apenas para entrega, endereço e zona. Cenários de validação utilizam identidades sintéticas.
+
+8. REGRAS OPERACIONAIS DE PÓS-VENDA
+Escopo: simulação de processos de atendimento e movimentação financeira, sem efeito contratual externo.
+Antes de pagar: cliente cancela sozinho; sistema libera reserva.
+Pago e ainda não preparado: administrador cancela e registra reembolso simulado; repõe estoque somente uma vez.
+Em preparação ou já recebido: cliente abre solicitação de atendimento para análise.
+Erro da loja em medida ou acabamento: administrador oferece refação ou reembolso simulado.
+Mudança de medida solicitada pelo cliente antes da produção: revisar proposta, preço e prazo; exigir nova aprovação.
+Mudança após início de produção: registrar solicitação e resolver manualmente, sem alteração silenciosa do pedido.
+Avaria: registrar ocorrência, analisar e simular substituição ou reembolso. Produto avariado não volta automaticamente ao estoque vendável.
+Troca de peça pronta sem avaria: janela simulada de 30 dias para solicitar análise. A reposição de estoque depende da inspeção administrativa.
+
+9. CENÁRIOS DE VALIDAÇÃO PONTA A PONTA
+CT-01 — Compra de produto pronto: cliente sintético Ana compra 2 Maresia a R$ 69,90, total R$ 139,80, com retirada. Reserva 2 unidades, aprova Pix simulado, baixa físico de 12 para 10 e reserva volta a zero. Administrador prepara, libera retirada e conclui após retirada simulada.
+CT-02 — Compra sob encomenda: cliente sintético Bruno aprova o orçamento de espelho dourado de R$ 206,50, escolhe retirada, paga sinal simulado de R$ 103,25, aprova especificações, acompanha produção de 10 dias úteis, paga saldo de R$ 103,25 e retira. Não baixar uma variação pronta para essa encomenda.
+Dependência do CT-02: modelagem de encomendas, aprovação de especificações e parcelas de sinal/saldo. Status: requisito planejado, sem evidência de execução.
+
+10. CONTEÚDO FUNCIONAL — FAQ
+A medida inclui a moldura? Consulte a indicação do produto: medida interna corresponde à imagem ou ao espelho; externa corresponde ao conjunto completo.
+Posso pedir uma medida diferente? Sim, solicite um orçamento com largura, altura e acabamento.
+Vocês imprimem a arte? Sim, a impressão pode ser incluída no orçamento personalizado.
+Posso levar minha fotografia? Sim, indique no orçamento que entregará a arte física.
+Posso retirar na loja? Sim, a retirada é gratuita após a confirmação de que o pedido está pronto.
+Fazem entrega? Nas zonas Central e Bairros, com taxa informada no checkout.
+Quando começa o prazo de uma encomenda? Após aprovação das especificações e confirmação do sinal.
+O produto chega pronto para instalar? Peças de parede incluem suporte; instalação não está incluída.
+Como acompanho meu pedido? Pela área Minha conta, em Pedidos.
+
+11. PARAMETRIZAÇÃO E GESTÃO DE DADOS
+CFG-01 — Identidade: parâmetros store_* centralizados em configuração, sem duplicação de dados institucionais nos componentes de interface.
+CFG-02 — Catálogo: alterações do mesmo item preservam ID e SKU. Itens distintos recebem novos registros. Desativação lógica preserva referências históricas de pedidos.
+CFG-03 — Mídia: publicação condicionada à existência e validação dos arquivos de imagem. image_asset_planned não deve ser utilizado como URL pública sem provisionamento do recurso.
+CFG-04 — Regras comerciais: taxas, zonas, prazos, validade de proposta e percentual de sinal são configuráveis. Alterações aplicam-se a novas operações; pedidos existentes preservam seus valores e condições.
+CFG-05 — Integrações: pagamento, notificações e entrega acessados por interfaces independentes dos adaptadores simulados. Credenciais e seleção de provedor são configurações de ambiente.
+CFG-06 — Estoque: quantidades iniciais aplicadas apenas no provisionamento. Reexecução não pode zerar reservas, repor estoque consumido nem sobrescrever movimentações.
+CFG-07 — Migração de ambiente: validar integridade referencial, separar dados sintéticos de dados operacionais e verificar configuração de integrações antes da ativação do ambiente de produção.
+CFG-08 — Rastreabilidade: alterações de parâmetros devem registrar versão, data de vigência e responsável. Dados históricos de compra são imutáveis em relação a mudanças de catálogo.
