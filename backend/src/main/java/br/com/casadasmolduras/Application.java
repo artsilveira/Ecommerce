@@ -1,5 +1,9 @@
 package br.com.casadasmolduras;
 
+import br.com.casadasmolduras.handler.CategoryHandler;
+import br.com.casadasmolduras.handler.ProductHandler;
+import br.com.casadasmolduras.repository.CategoryRepository;
+import br.com.casadasmolduras.repository.ProductRepository;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
@@ -16,6 +20,8 @@ public class Application {
         );
 
         server.createContext("/health", Application::handleHealth);
+        server.createContext("/api/categories", new CategoryHandler(new CategoryRepository()));
+        server.createContext("/api/products", new ProductHandler(new ProductRepository()));
 
         server.start();
 
